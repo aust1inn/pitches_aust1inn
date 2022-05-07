@@ -4,3 +4,9 @@ run:
 execute:
 	python3.8 manage.py
 
+migrateInit:
+	python3.8 manage.py db migrate -m "Another Migration"
+
+migrate:
+	python3.8 manage.py db upgrade
+
