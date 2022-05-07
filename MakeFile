@@ -1,0 +1,6 @@
+run:
+	./start.sh
+
+execute:
+	python3.8 manage.py
+
