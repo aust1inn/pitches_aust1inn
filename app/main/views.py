@@ -10,12 +10,11 @@ from flask_login import login_user,current_user,logout_user,login_required
 
 # Views
 @main.route('/')
+@main.route('/index')
+
 def index():
-    name = "Time to get started "
-    # context ={
-    #     name: name
-    # }
-    return render_template('index.html', name=name)
+    return render_template('index.html')
+
 
 @main.route('/register',methods=['GET','POST'])
 def register():
@@ -29,7 +28,7 @@ def register():
         db.session.commit()
         # flash(f'Account created for {form.username.data}!','success')
         flash('Your account has been created! You are now able to log in' , 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('main.login'))
     # else:
     #     flash(f'Account created for {form.username.data}!','success')
     #     # return redirect(url_for('home'))    
@@ -46,7 +45,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page= request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('main.index'))
         else:    
             flash("Login unsuccesful.Please check email and password",'danger')
 
