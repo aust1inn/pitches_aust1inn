@@ -3,8 +3,8 @@ from flask import render_template,url_for,flash,redirect,request
 from PIL import Image
 from . import main
 from .. import bcrypt,db
-from forms import RegistrationForm,LoginForm,UpdateAccountForm
-from models import User
+from .forms import RegistrationForm,LoginForm,UpdateAccountForm
+from ..models import User
 from flask_login import login_user,current_user,logout_user,login_required
 
 
