@@ -15,25 +15,25 @@ class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),nullable=False)
     email=db.Column(db.String(255),unique=True,nullable=False)
-    pass_secure  = db.Column(db.String(255),nullable=False)
+    password=db.Column(db.String(60),nullable=False)
     bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
+    image_file=db.Column(db.String(20),nullable=False,default='default.jpg')
     pitches = db.relationship('Pitch', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     upvote = db.relationship('Upvote',backref='user',lazy='dynamic')
     downvote = db.relationship('Downvote',backref='user',lazy='dynamic')
 
-    @property
-    def password(self):
-        raise AttributeError('You cannot read the password attribute')
+    # @property
+    # def password(self):
+    #     raise AttributeError('You cannot read the password attribute')
 
-    @password.setter
-    def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+    # @password.setter
+    # def password(self, password):
+    #     self.pass_secure = generate_password_hash(password)
 
 
-    def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+    # def verify_password(self,password):
+    #     return check_password_hash(self.pass_secure,password)
 
     def __repr__(self):
         return f'User {self.username}'
