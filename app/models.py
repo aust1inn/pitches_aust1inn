@@ -5,7 +5,9 @@ from datetime import datetime
 
 #Model Class for User
 class User(db.Model):
+
     __tablename__ = 'users'
+
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),nullable=False)
     email=db.Column(db.String(255),unique=True,nullable=False)
@@ -98,6 +100,7 @@ class Comment(db.Model):
 
 
 class Upvote(db.Model):
+    
     __tablename__ = 'upvotes'
 
     id = db.Column(db.Integer,primary_key=True)
