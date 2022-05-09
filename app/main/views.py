@@ -117,6 +117,7 @@ def pitch():
 @login_required
 def comment(pitch_id):
     form = CommentForm()
+    title='comment'
     pitch = Pitch.query.get(pitch_id)
     all_comments = Comment.query.filter_by(pitch_id = pitch_id).all()
     if form.validate_on_submit():
@@ -124,6 +125,6 @@ def comment(pitch_id):
         pitch_id = pitch_id
         user_id = current_user._get_current_object().id
         new_comment = Comment(comment = comment,user_id = user_id,pitch_id = pitch_id)
-        new_comment.save_c()
+        new_comment.save_comment()
         return redirect(url_for('.comment', pitch_id = pitch_id))
-    return render_template('comment.html', form =form, pitch = pitch,all_comments=all_comments)
+    return render_template('comment.html', form =form, pitch = pitch,all_comments=all_comments,title=title)
