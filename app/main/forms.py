@@ -59,3 +59,6 @@ class UpdateAccountForm(FlaskForm):
             
             if user:
                 raise ValidationError('That email is taken.Please try a different one')        
+
+class PitchForm(FlaskForm):
+    pass
