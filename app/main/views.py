@@ -13,7 +13,8 @@ from flask_login import login_user,current_user,logout_user,login_required
 @main.route('/index')
 
 def index():
-    return render_template('index.html')
+    title="home"
+    return render_template('index.html',title=title)
 
 
 @main.route('/register',methods=['GET','POST'])
@@ -55,7 +56,7 @@ def login():
 @main.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('main.index'))
 
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
