@@ -14,7 +14,11 @@ from flask_login import login_user,current_user,logout_user,login_required
 
 def index():
     title="home"
-    return render_template('index.html',title=title)
+    pitches = Pitch.query.all()
+    romance = Pitch.query.filter_by(category = 'romance').all() 
+    job = Pitch.query.filter_by(category = 'job').all()
+    advert = Pitch.query.filter_by(category = 'advert').all()
+    return render_template('index.html', job = job,romance=romance, pitches = pitches,advert= advert,title=title)
 
 
 @main.route('/register',methods=['GET','POST'])
@@ -94,7 +98,7 @@ def account():
     return render_template('account.html' ,title='account', image_file=image_file, form=form)    
    
 @main.route('/create_new', methods = ['POST','GET'])
-# @login_required
+@login_required
 def pitch():
     form = PitchForm()
     title='new pitch'
