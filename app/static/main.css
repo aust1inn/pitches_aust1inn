@@ -1,6 +1,6 @@
 body {
-    background: #fafafa;
-    color: #333333;
+    background: #cf7474;
+    color: #dd1414;
     margin-top: 5rem;
   }
   
@@ -23,3 +23,7 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
+
+.romance {
+  font-size: xx-large;
+}
