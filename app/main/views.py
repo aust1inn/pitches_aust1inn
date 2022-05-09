@@ -3,8 +3,8 @@ from flask import render_template,url_for,flash,redirect,request
 from PIL import Image
 from . import main
 from .. import bcrypt,db
-from .forms import RegistrationForm,LoginForm,UpdateAccountForm
-from ..models import User
+from .forms import RegistrationForm,LoginForm,UpdateAccountForm,PitchForm,CommentForm
+from ..models import User,Pitch
 from flask_login import login_user,current_user,logout_user,login_required
 
 
@@ -93,3 +93,18 @@ def account():
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html' ,title='account', image_file=image_file, form=form)    
    
+@main.route('/create_new', methods = ['POST','GET'])
+# @login_required
+def pitch():
+    form = PitchForm()
+    title='new pitch'
+    if form.validate_on_submit():
+        title = form.title.data
+        content = form.content.data
+        category = form.category.data
+        user_id = current_user
+        new_pitch_object = Pitch(content=content,user_id=current_user._get_current_object().id,category=category,title=title)
+        new_pitch_object.save_pitch()
+        return redirect(url_for('main.index'))
+        
+    return render_template('pitch.html', form = form,title=title)   

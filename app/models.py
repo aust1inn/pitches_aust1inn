@@ -43,7 +43,6 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
-    category_id=db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     title=db.Column(db.String)
     content = db.Column(db.String())
@@ -61,23 +60,23 @@ class Pitch(db.Model):
     def __repr__(self):
         return f'Pitch {self.content}'
 
-class Category(db.Model):
+# class Category(db.Model):
 
-    __tablename__ = 'categories'
+#     __tablename__ = 'categories'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    description = db.Column(db.String(255))
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(255))
+#     description = db.Column(db.String(255))
 
-    # save pitches
-    def save_category(self):
-        db.session.add(self)
-        db.session.commit()
+#     # save pitches
+#     def save_category(self):
+#         db.session.add(self)
+#         db.session.commit()
 
-    @classmethod
-    def get_categories(cls):
-        categories = Category.query.all()
-        return categories
+#     @classmethod
+#     def get_categories(cls):
+#         categories = Category.query.all()
+#         return categories
 
 
 
