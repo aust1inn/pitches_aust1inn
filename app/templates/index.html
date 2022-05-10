@@ -3,30 +3,34 @@
 
 {% block content %}
   
-<div  class="container" >
     
-<div class="">
+<div class="row">
     <!-- <h4>All pitches</h4>
     <div  class="" ><br>
         {{ macro.display(pitches) }}
     </div> -->
-
-    <h4>Romance</h4>
-    <div  class="romance" ><br>
+    <div class="col-md-4">
+        <h6 class="text-info">Romance</h6>
+         <div  class="romance" ><br>
         {{ macro.display(romance)}}
+        </div>
     </div>
-
-    <h4>advert</h4>
-    <div  class="" id=""><br>
+    
+    <div class="col-md-4">
+        <h6 class="text-info">advert</h6>
+        <div  class="" id=""><br>
         {{ macro.display(advert) }}
+         </div>
     </div>
-
-    <h4>Job</h4>
-    <div><br>
+    
+    <div class="col-md-4">
+        <h6 class="text-info">Job</h6>
+        <div><br>
         {{ macro.display(job) }}
         
-    </div> 
-</div>
+        </div> 
+    </div>
+    
 </div>
 
 {% endblock %}

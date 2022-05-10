@@ -6,11 +6,16 @@ class Config:
 
 
 class ProdConfig(Config):
-    pass
+    uri = os.getenv('DATABASE_URL')
+    if uri and uri.startswith('postgres://'):
+        uri = uri.replace('postgres://', 'postgresql://', 1)
+        
+    SQLALCHEMY_DATABASE_URI=uri    
 
 
 class DevConfig(Config):
-    DEBUG = True
+    # DEBUG = True
+    pass
 
 config_options = {
 'development':DevConfig,

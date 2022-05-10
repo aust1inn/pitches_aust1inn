@@ -1,12 +1,10 @@
 {% macro display(pitches) %}
-<div class="container-fluid">
-		<div class="row">
 				{% if pitches %}
 					{% for category in pitches %}
-							<h5 class="card-header">{{category.title}}</h5>
+							<h6 class="card-header text-lg-center text-success">{{category.title}}</h6>
 							<div class="card-body">
 									<p>{{category.content}}</p>
-									<p class="text-center"> Category: {{category.category}}</p>
+									<p class="text-center text-muted "> Category: {{category.category}}</p>
 									<footer class="blockquote-footer text-center" > Posted by: {{category.user.username}}</footer>
                                     <div><span class="foot" >{{category.comment.count()}} Comments</span> 
                                         <a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
@@ -22,6 +20,4 @@
 					</div>
 				</div>
 				{% endif %}
-			</div>
-</div>
 {% endmacro %}
