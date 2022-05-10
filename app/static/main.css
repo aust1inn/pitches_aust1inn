@@ -24,4 +24,7 @@ body {
     font-weight: 500;
   }
 
-  
+  .comment-login{
+    font-size: x-small;
+    margin-top: 2px;
+  }
