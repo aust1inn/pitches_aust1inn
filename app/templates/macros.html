@@ -6,9 +6,15 @@
 									<p>{{category.content}}</p>
 									<p class="text-center text-muted "> Category: {{category.category}}</p>
 									<footer class="blockquote-footer text-center" > Posted by: {{category.user.username}}</footer>
-                                    <div><span class="foot" >{{category.comment.count()}} Comments</span> 
-                                        <a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
-                                    </div>  
+
+									{% if current_user.is_authenticated %}
+
+										<div><span class="foot" >{{category.comment.count()}} Comments</span> 
+											<a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
+										</div>  
+									{% else %}	
+										<a href="{{ url_for('main.login')}}"><button class="btn-primary">Login to comment</button></a>
+									{% endif %}	
                             </div>        
                                     
 					{% endfor %}
